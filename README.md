@@ -6,22 +6,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Mortgage Calculator App:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+User can change default value in the Payment Plan form, and click Calculate.
 
-## Build
+The monthly mortgage payment value will show subsequently.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For the currently version, the calcultion does not include Prepayment Plan.
 
-## Running unit tests
+Manual tests applied, the details please see below:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Test Plan for Payment Plan and Calculate functions:
+Note: For each test cases, all the other field are kept the same, except the field being tested. The Monthly Mortgage Payment(MMP) value will be observed.
+| Test Cases                           | Procedure                                       | Result                                          |
+| -------------------------------------|:-----------------------------------------------:| -----------------------------------------------:|
+| 01: Verify Mortgage Amount field     | Increase and decrease Mortgage Amount Value     |  MMP increased and decreased accordingly, pass  |
+| 02: Verify Interest Rate field       | Increase and decrease Interest Rate Value       |  MMP increased and decreased accordingly, pass  |
+| 03: Verify Amortization Period field | Increase and decrease Amortization Period Value |  MMP decreased and increased accordingly, pass  |
+| 04: Verify Payment Frequency field   | Increase and decrease Payment Frequency Value   |  MMP decreased and increased accordingly, pass  |
+| 05: Verify Term field                | Increase and decrease Term Value                |  MMP value does not change, pass                |
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+For the test case 05 pass, the reason is the current Monthly Mortgage Payment calculation formular does not include the term parameter, so the change of term value should not alters the result.

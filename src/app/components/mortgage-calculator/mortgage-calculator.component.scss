@@ -1,0 +1,103 @@
+$primary-color: #2a74b2;
+$help-icon-color: #3268a1;
+$btn-primary-color: #345174;
+$btn-primary-hover-color: #205788;
+$btn-primary-border-color: #0e1620;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin-top: 1rem;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.content {
+  display: block;
+}
+
+.card {
+  width: 48%;
+  border-color: #2b75b2;
+  margin: 10px;
+}
+.card-header {
+  color: white;
+  background-color: $primary-color;
+}
+
+.help-icon {
+  color: $help-icon-color;
+}
+
+.help-icon:hover {
+  cursor: pointer;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgb(153, 19, 19);
+}
+
+a {
+  color: #294261;
+  text-decoration: underline;
+}
+a:visited {
+  color: #7834bc;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+.btn-primary {
+  border-color: $btn-primary-border-color;
+  background-color: $btn-primary-color;
+}
+
+.btn-primary:hover {
+  background-color: $btn-primary-hover-color;
+}
+
+.calc-summary {
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 100%;
+    border-color: #2b75b2;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    width: 100%;
+    border-color: #2b75b2;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .card {
+    width: 100%;
+    border-color: #2b75b2;
+    margin: 10px;
+  }
+}

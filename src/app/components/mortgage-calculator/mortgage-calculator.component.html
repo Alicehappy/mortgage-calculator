@@ -1,0 +1,175 @@
+<main class="container" role="main">
+    <h1>
+        <img src="../../assets/images/mc-goc.png" height="53" width="53" alt="Image of a house within a calculator">
+        <span>Mortgage Calculator</span>
+    </h1>
+
+    <hr>
+
+    <div class="content">
+        <span>
+            <strong>
+                From
+                <a href="https://www.canada.ca/en/financial-consumer-agency.html">Financial Consumer Agency of
+                    Canada</a>
+            </strong>
+        </span>
+        <div>
+            <p>
+                This calculator determines your mortgage payment and provides you with a mortgage payment schedule. The
+                calculator also shows how much money and how many years you can save by making prepayments.
+            </p>
+            <p>
+                To help determine whether or not you qualify for a home mortgage based on income and expenses, visit the
+                <a href="https://itools-ioutils.fcac-acfc.gc.ca/MQ-HQ/MQ-EAPH-eng.aspx">Mortgage Qualifier Tool</a>.
+            </p>
+            <p>
+                <strong>Note:</strong>
+                As of July 9, 2012, the maximum amortization period for mortgages with less than a 20 percent down
+                payment is
+                <strong>25 years</strong>.
+            </p>
+        </div>
+        <form [formGroup]="mortCalcForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <section class="card">
+                    <h5 class="card-header">Payment Plan</h5>
+                    <div class="card-body">
+                        <div formGroupName="payPlanForm">
+                            <div class="form-group row">
+                                <label for="mortgageAmount" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Mortgage Amount:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="mortgageAmount"
+                                        formControlName="mortAmoun">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="interestRate" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Interest Rate:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <input type="number" class="form-control" id="interestRate"
+                                        formControlName="intereRate">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="amortizationPeriod" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Amortization Period:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <select class="form-control" id="amortizationPeriod" formControlName="amortPeriod">
+                                        <option *ngFor="let amortPeriYear of amortPeriYears; index as i"
+                                            [selected]="i == 25">
+                                            {{ amortPeriYear }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="paymentFrequency" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Payment Frequency:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <select class="form-control" id="paymentFrequency" formControlName="payFreq">
+                                        <option *ngFor="let payFreq of payFreqArr; index as i" [selected]="i==5">
+                                            {{ payFreq }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="term" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Term:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <select class="form-control" id="term" formControlName="term">
+                                        <option *ngFor="let term of termArr; index as i" [selected]="i==4">
+                                            {{term}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h5 class="card-header">Prepayment Plan</h5>
+                    <div class="card-body">
+                        <div formGroupName="prepayPlanForm">
+                            <div class="form-group row">
+                                <label for="prepaymentAmount" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Prepayment Amount:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="prepaymentAmount"
+                                        formControlName="prepayAmoun">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="prepaymentFrequency" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Prepayment Frequency:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <select class="form-control" id="prepaymentFrequency" formControlName="prepayFreq">
+                                        <option *ngFor="let prepayFreq of prepayFreqArr; index as i"
+                                            [selected]="i == 0">
+                                            {{ prepayFreq }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="startWithPayment" class="col-sm-10 col-md-5 col-lg-5 col-xl-5">
+                                    <fa-icon [icon]="helpIcon" size="sm" class="help-icon" title="Additional info">
+                                    </fa-icon>
+                                    Start With Payment:
+                                </label>
+                                <div class="input-group col-sm-10 col-md-7 col-lg-7 col-xl-7">
+                                    <input type="number" class="form-control" id="startWithPayment"
+                                        formControlName="starPay">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        <div class="calc-summary">
+            <strong> Monthly Mortgage Payment: </strong> {{ monMortPay | currency:'CAD'}}
+        </div>
+    </div>
+</main>
